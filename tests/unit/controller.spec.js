@@ -20,9 +20,14 @@ describe('Controller.vue', () => {
       propsData: {}
     })
 
+    wrapper.setData({
+      height: 800,
+      width: 600
+    })
+
     wrapper.trigger('click', {
-      clientX: wrapper.element.offsetWidth / 2,
-      clientY: wrapper.element.offsetHeight / 2
+      clientX: 600 / 2,
+      clientY: 800 / 2
     })
 
     wrapper.vm.alpha.should.equal(0.5);

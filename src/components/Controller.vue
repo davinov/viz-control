@@ -14,20 +14,23 @@ export default {
       beta1: 0,
       beta2: 0,
       beta3: 0,
-      gamma: 0
+      gamma: 0,
+      height: 0,
+      width: 0
     }
   },
   methods: {
     update(event) {
       this.$el.offsetHeight 
-      this.$el.offsetWidth 
-
-      console.log(event.target.clientX)
-      console.log(event.target.clientY)
+      this.$el.offsetWidth
 
       this.alpha = 0
       this.gamma = 1
     }
+  },
+  mounted: function() {
+    this.height = this.$el.offsetHeight
+    this.width = this.$el.offsetWidth
   }
 }
 </script>
