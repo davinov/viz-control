@@ -18,4 +18,15 @@ describe('Controller.vue', () => {
       inputWrapper.attributes('step').should.eql('0.01')
     })
   })
+
+  it('should update alpha and gamma on click', () => {
+    const wrapper = shallowMount(Controller, {
+      propsData: {}
+    })
+
+    const oldValues = {
+      alpha: wrapper.vm.alpha,
+      gamma: wrapper.vm.gamma
+    }
+  })
 })
