@@ -4,29 +4,28 @@ import { shallowMount } from '@vue/test-utils'
 import Controller from '@/components/Controller.vue'
 
 describe('Controller.vue', () => {
-  it('should display five inputs for ranges from 0 to 1', () => {
-    const wrapper = shallowMount(Controller, {
-      propsData: {}
-    })
-
-    const inputsWrapperArray = wrapper.findAll('input')
-    inputsWrapperArray.should.have.lengthOf(5)
-    inputsWrapperArray.wrappers.forEach(inputWrapper => {
-      inputWrapper.attributes('type').should.eql('range')
-      inputWrapper.attributes('min').should.eql('0')
-      inputWrapper.attributes('max').should.eql('1')
-      inputWrapper.attributes('step').should.eql('0.01')
-    })
-  })
-
   it('should update alpha and gamma on click', () => {
     const wrapper = shallowMount(Controller, {
       propsData: {}
     })
 
-    const oldValues = {
-      alpha: wrapper.vm.alpha,
-      gamma: wrapper.vm.gamma
-    }
+    wrapper.trigger('click')
+
+    wrapper.vm.alpha.should.equal(0);
+    wrapper.vm.gamma.should.equal(1);
+  })
+
+  it('should update alpha and gamma on click on center', () => {
+    const wrapper = shallowMount(Controller, {
+      propsData: {}
+    })
+
+    wrapper.trigger('click', {
+      clientX: wrapper.element.offsetWidth / 2,
+      clientY: wrapper.element.offsetHeight / 2
+    })
+
+    wrapper.vm.alpha.should.equal(0.5);
+    wrapper.vm.gamma.should.equal(0.5);
   })
 })
